@@ -50,6 +50,8 @@ export class SignaturePad implements AfterContentInit, OnDestroy {
     }
 
     this.signaturePad = new SignaturePadNative.default(canvas, this.options);
+    // Property name is _canvas in the native pad, so point the reference to the same
+    this.signaturePad.canvas = this.signaturePad._canvas; 
     this.signaturePad.onBegin = this.onBegin.bind(this);
     this.signaturePad.onEnd = this.onEnd.bind(this);
   }
